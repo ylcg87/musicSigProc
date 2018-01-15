@@ -1,5 +1,5 @@
 # Author: Liang Ge
-# Acoustic Shield, Inc (c) 2017
+# Audio Strings LLC (c) 2017
 # https://en.wikipedia.org/wiki/Short-time_Fourier_transform
 # http://matplotlib.org/users/image_tutorial.html
 # http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow
@@ -13,18 +13,18 @@ from scipy.fftpack import fft, ifft
 import math
 from math import pi
 
-folder = 'sounds/'
-file = 'string1_Pick2.wav'
+folder = 'sounds/piano/testSong/'
+file = 'bar1.wav'
 rate, data = wavfile.read(folder+file, 'r')
 # left channel
 if data.ndim == 2:
 	data = data[:, 0]
 
 # Parameters
-windowSize = 1023
-fftSize = 4096
-hopSize = 100
-freqObseve = 6000
+windowSize = 4096*2
+fftSize = 4096*2
+hopSize = 557
+freqObseve = 3000
 
 # windowRect = np.ones(windowSize)
 # window = windowRect
@@ -76,5 +76,5 @@ plt.title(file)
 plt.xlabel('Frequency Bin (' + str(freqBin) + ' Hz per bin)')
 plt.ylabel('Time Frame')
 plt.colorbar()
-plt.savefig(file + ' STFT' + '.png')
+# plt.savefig(file + ' STFT' + '.png')
 plt.show()

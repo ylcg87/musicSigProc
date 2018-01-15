@@ -1,5 +1,5 @@
 # Author: Liang Ge
-# Acoustic Shield, Inc (c) 2017
+# Audio Strings LLC (c) 2017
 
 import scipy
 import numpy as np
@@ -9,34 +9,40 @@ from scipy.fftpack import fft, ifft
 import math
 from math import pi
 
-rate, data = wavfile.read('sounds/string6_hand.wav', 'r')
+folder = 'sounds/piano/testSong/'
+file = 'bar1.wav'
+rate, data = wavfile.read(folder+file, 'r')
+
 if data.ndim == 2:
 	data = data[:, 0]
 
-windowSize = 1023
-fftSize = 4096
-hopSize = 250
-freqObseve = 6000
+windowSize = 4096*2
+fftSize = 4096*2
+hopSize = 557
+freqObseve = 3000
 
-frameStart = 150 * hopSize
+frameStart = 170 * hopSize
 
 # frame time domain
 frame_x = data[frameStart:(frameStart+windowSize)]
 
 # windowed fft
+# windowRect = np.ones(windowSize)
+# window = windowRect
 windowHamming = 0.54 - 0.46 * np.cos(2*pi/(windowSize-1) * np.arange(windowSize))
-
 window = windowHamming
+
 fft_x = np.append(frame_x * window, np.zeros(fftSize-windowSize))
 time_x = np.arange(frameStart, frameStart+windowSize) * 1.0/rate
 
 # frame frequency domain
 X = fft(fft_x)
-Xabs_dB = 10.0 * np.log10(abs(X))
+# Xabs_dB = 10.0 * np.log10(abs(X))
+Xabs_dB = abs(X)
 Xphase = scipy.angle(X) / pi
-freq_x = np.arange(fftSize/2+1) * rate / fftSize
 
 freqBin = rate / float(fftSize)
+freq_x = np.arange(fftSize/2+1) * freqBin
 freqStop = int(math.ceil(freqObseve/freqBin))
 
 # plt.figure(1)
@@ -69,7 +75,12 @@ while index < (freqStop-1):
 
 freqPeak = np.append(freqPeak, eps)
 
-plt.figure(2)
+plt.figure(1, figsize=(16, 8))
+plt.plot(time_x, frame_x)
+plt.title('Frame frame_x(t)')
+plt.xlabel('Time')
+
+plt.figure(2, figsize=(16, 8))
 plt.plot(freq_x[0:freqStop], Xabs_dB[0:freqStop])
 # plt.title('Frame |FFT(x)|')
 # plt.xlabel('Frequency (Hz)') 

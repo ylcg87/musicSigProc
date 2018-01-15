@@ -12,7 +12,10 @@ from scipy.fftpack import fft, ifft
 import math
 from math import pi
 
-rate, data = wavfile.read('sounds/string6_hand.wav', 'r')
+folder = 'sounds/'
+file = 'music1.wav'
+rate, data = wavfile.read(folder+file, 'r')
+
 if data.ndim == 2:
 	data = data[:, 0]
 
@@ -21,7 +24,7 @@ fftSize = 4096
 hopSize = 100
 freqObseve = 10000
 
-frameStart = 10 * hopSize
+frameStart = 1 * hopSize
 
 # frame time domain
 frame_x = data[frameStart:(frameStart+windowSize)]

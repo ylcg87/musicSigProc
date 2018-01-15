@@ -11,7 +11,7 @@ import math
 from math import pi
 
 folder = 'sounds/'
-file = 'string1_Pick2.wav'
+file = 'music1.wav'
 rate, data = wavfile.read(folder+file, 'r')
 # left channel
 if data.ndim == 2:
@@ -21,8 +21,8 @@ if data.ndim == 2:
 windowSize = 1023
 fftSize = 4096
 hopSize = 100
-freqObseve = 6000
-threshold_dB = 40
+freqObseve = 3000
+threshold_dB = 50
 eps = 0
 
 windowHamming = 0.54 - 0.46 * np.cos(2*pi/(windowSize-1) * np.arange(windowSize))
@@ -70,5 +70,5 @@ plt.title(file)
 plt.xlabel('Frequency Bin (' + str(freqBin) + ' Hz per bin)')
 plt.ylabel('Time Frame')
 plt.colorbar()
-plt.savefig(file + 'STFT Peak' + '.png')
-# plt.show()
+# plt.savefig(file + 'STFT Peak' + '.png')
+plt.show()

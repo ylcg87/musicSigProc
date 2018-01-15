@@ -10,8 +10,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
-folder = 'sounds/'
-file = 'string1_Pick2.wav'
+folder = 'sounds/piano/testSong/'
+file = 'bar1.wav'
 rate, data = wavfile.read(folder+file, 'r')
 
 if data.ndim == 1:
@@ -31,10 +31,10 @@ elif data.ndim == 2:
 	plt.figure(1, figsize=(16, 8))
 	plt.plot(time, left_channel)
 	plt.title(file + ' Stereo Left Channel')
-	plt.savefig(file+'.png')
+	# plt.savefig(file+'.png')
 
 	plt.figure(2, figsize=(16, 8))
 	plt.plot(time, right_channel)
-	plt.title('Stereo Right Channel')
+	plt.title(file + 'Stereo Right Channel')
 	
 	plt.show()
