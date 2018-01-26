@@ -9,19 +9,19 @@ from scipy.fftpack import fft, ifft
 import math
 from math import pi
 
-folder = 'sounds/piano/testSong/'
-file = 'bar1.wav'
+folder = 'sounds/piano/MuseScore/'
+file = 'littlestar_tempo60.wav'
 rate, data = wavfile.read(folder+file, 'r')
 
 if data.ndim == 2:
 	data = data[:, 0]
 
-windowSize = 4096*2
+windowSize = 4096
 fftSize = 4096*2
-hopSize = 557
-freqObseve = 3000
+hopSize = 512
+freqObseve = 6000
 
-frameStart = 170 * hopSize
+frameStart = 1 * hopSize
 
 # frame time domain
 frame_x = data[frameStart:(frameStart+windowSize)]
@@ -59,7 +59,7 @@ freqStop = int(math.ceil(freqObseve/freqBin))
 # plt.show()
 
 # find frequency peaks
-threshold_dB = 40
+threshold_dB = 0
 eps = 0
 freqPeak = np.array([eps])
 index = 1

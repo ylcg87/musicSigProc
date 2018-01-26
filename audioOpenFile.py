@@ -10,8 +10,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
-folder = 'sounds/piano/testSong/'
-file = 'bar1.wav'
+folder = 'sounds/piano/MuseScore/'
+file = 'littlestar_tempo60.wav'
 rate, data = wavfile.read(folder+file, 'r')
 
 if data.ndim == 1:
