@@ -10,7 +10,7 @@ import math
 from math import pi
 
 folder = 'sounds/piano/MuseScore/'
-file = 'littlestar_tempo60.wav'
+file = 'little_star_3.wav'
 rate, data = wavfile.read(folder+file, 'r')
 
 if data.ndim == 2:
@@ -19,9 +19,9 @@ if data.ndim == 2:
 windowSize = 4096
 fftSize = 4096*2
 hopSize = 512
-freqObseve = 6000
+freqObseve = 15000
 
-frameStart = 1 * hopSize
+frameStart = 431 * hopSize
 
 # frame time domain
 frame_x = data[frameStart:(frameStart+windowSize)]
@@ -88,6 +88,6 @@ plt.plot(freq_x[0:freqStop], Xabs_dB[0:freqStop])
 plt.stem(freq_x[0:freqStop], freqPeak, 'r')
 plt.title('Frame |FFT(x)| Peak Value')
 plt.xlabel('Frequency (Hz)')
-plt.ylabel('dB')
+# plt.ylabel('dB')
 
 plt.show()

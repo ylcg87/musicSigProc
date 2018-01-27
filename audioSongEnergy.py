@@ -14,7 +14,7 @@ from math import pi
 # File input							#
 # ------------------------------------- #
 folder = 'sounds/piano/MuseScore/'
-file = 'littlestar_tempo60.wav'
+file = 'testMulF0_C4C5.wav'
 rate, data = wavfile.read(folder+file, 'r')
 # Take the left channel
 if data.ndim == 2:
@@ -23,9 +23,9 @@ if data.ndim == 2:
 # ------------------------------------- #
 # Set Short-time FFT parameters			#
 # ------------------------------------- #
-windowSize = 4096*2
+windowSize = 4096
 fftSize = 4096*2
-hopSize = 557
+hopSize = 512
 freqObseve = 3000
 
 # windowHamming = 0.54 - 0.46 * np.cos(2*pi/(windowSize-1) * np.arange(windowSize))

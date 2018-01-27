@@ -11,8 +11,10 @@ import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
 folder = 'sounds/piano/MuseScore/'
-file = 'littlestar_tempo60.wav'
+file = 'testMulF0_C4C5.wav'
 rate, data = wavfile.read(folder+file, 'r')
+
+print 'rate = ', rate
 
 if data.ndim == 1:
 	# Mono sound

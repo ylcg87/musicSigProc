@@ -14,7 +14,7 @@ import math
 from math import pi
 
 folder = 'sounds/piano/MuseScore/'
-file = 'littlestar_tempo60.wav'
+file = 'testMulF0_C4C5.wav'
 rate, data = wavfile.read(folder+file, 'r')
 # left channel
 if data.ndim == 2:
