@@ -58,8 +58,9 @@ freqMin = 20
 freqMax = 15000
 
 # Window for fft
-windowHamming = 0.54 - 0.46 * np.cos(2*pi/(windowSize-1) * np.arange(windowSize))
-window = windowHamming
+# windowHamming = 0.54 - 0.46 * np.cos(2*pi/(windowSize-1) * np.arange(windowSize))
+windowRect = np.ones(windowSize)
+window = windowRect
 
 # ------------------------------------- #
 # Get current frame data				#
